@@ -24,5 +24,5 @@ int	ft_putstr_fd(char *s, int fd)
 		p += write(fd, s, 1);
 		s++;
 	}
-	return(p);
+	return (p);
 }

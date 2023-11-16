@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_fd_hex.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 10:05:45 by pmarkaid          #+#    #+#             */
-/*   Updated: 2023/11/15 15:39:06 by pmarkaid         ###   ########.fr       */
+/*   Created: 2023/11/16 10:28:41 by pmarkaid          #+#    #+#             */
+/*   Updated: 2023/11/16 10:59:07 by pmarkaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr_fd_hex(unsigned int n, int fd, int uppercase)
 {
 	int	p;
 
 	p = 0;
-	if (n == -2147483648)
-		p += write(fd, "-2147483648", 11);
-	else if (n < 0)
+	if (n >= 16)
 	{
-		p += ft_putchar_fd('-', fd);
-		p += ft_putnbr_fd(-n, fd);
-	}
-	else if (n >= 10)
-	{
-		p += ft_putnbr_fd(n / 10, fd);
-		p += ft_putchar_fd(n % 10 + '0', fd);
+		p += ft_putnbr_fd_hex(n / 16, fd, uppercase);
+		p += ft_putnbr_fd_hex(n % 16, fd, uppercase);
 	}
 	else
-		p += ft_putchar_fd(n % 10 + '0', fd);
+	{
+		if (n < 10)
+			p += ft_putchar_fd(n + '0', fd);
+		else
+		{
+			if (uppercase)
+				p += ft_putchar_fd(n - 10 + 'A', fd);
+			else
+				p += ft_putchar_fd(n - 10 + 'a', fd);
+		}
+	}
 	return (p);
 }
