@@ -6,12 +6,13 @@
 /*   By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:22:12 by pmarkaid          #+#    #+#             */
-/*   Updated: 2023/11/16 13:08:33 by pmarkaid         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:22:41 by pmarkaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include <stdarg.h>
+#include "ft_printf.h"
+#include "libft.h"
+
 
 int	ft_putformat(char specifier, va_list args)
 {
