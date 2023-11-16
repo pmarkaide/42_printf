@@ -6,7 +6,7 @@
 #    By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/24 12:10:27 by pmarkaid          #+#    #+#              #
-#    Updated: 2023/11/16 10:47:34 by pmarkaid         ###   ########.fr        #
+#    Updated: 2023/11/16 11:10:39 by pmarkaid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRC = \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
+	ft_putnbr_fd_uns.c \
 	ft_putnbr_fd_hex.c \
 	ft_putnbr_fd_oct.c \
 	ft_substr.c \
