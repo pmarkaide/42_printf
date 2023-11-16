@@ -6,7 +6,7 @@
 #    By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 11:21:07 by pmarkaid          #+#    #+#              #
-#    Updated: 2023/11/16 14:16:20 by pmarkaid         ###   ########.fr        #
+#    Updated: 2023/11/16 14:43:28 by pmarkaid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJS = $(SRCS:.c=.o)
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-INCLUDES = -I includes -I $(LIBFT_DIR)
+INCLUDES = -I . -I $(LIBFT_DIR)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror

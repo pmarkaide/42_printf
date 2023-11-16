@@ -13,7 +13,6 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-
 int	ft_putformat(char specifier, va_list args)
 {
 	int	p;
@@ -28,12 +27,12 @@ int	ft_putformat(char specifier, va_list args)
 	else if (specifier == 'd' || specifier == 'i')
 		p += ft_putnbr_fd(va_arg(args, int), 1);
 	else if (specifier == 'u')
-		p += ft_putnbr_fd_uns(va_arg(args, unsigned long), 1);	
+		p += ft_putnbr_fd_uns(va_arg(args, unsigned long), 1);
 	else if (specifier == 'x')
 		p += ft_putnbr_fd_hex(va_arg(args, unsigned long), 1, 0);
 	else if (specifier == 'X')
 		p += ft_putnbr_fd_hex(va_arg(args, unsigned long), 1, 1);
-	else if(specifier == 'p')
+	else if (specifier == 'p')
 		p += ft_putptr_fd(va_arg(args, unsigned long), 1);
 	return (p);
 }
