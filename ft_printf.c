@@ -6,7 +6,7 @@
 /*   By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:22:12 by pmarkaid          #+#    #+#             */
-/*   Updated: 2023/11/16 14:22:41 by pmarkaid         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:52:55 by pmarkaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	ft_putformat(char specifier, va_list args)
 	else if (specifier == 'u')
 		p += ft_putnbr_fd_uns(va_arg(args, unsigned long), 1);
 	else if (specifier == 'x')
-		p += ft_putnbr_fd_hex(va_arg(args, unsigned long), 1, 0);
+		p += ft_putnbr_fd_hex(va_arg(args, unsigned int), 1, 0);
 	else if (specifier == 'X')
-		p += ft_putnbr_fd_hex(va_arg(args, unsigned long), 1, 1);
+		p += ft_putnbr_fd_hex(va_arg(args, unsigned int), 1, 1);
 	else if (specifier == 'p')
 		p += ft_putptr_fd(va_arg(args, unsigned long), 1);
 	return (p);
