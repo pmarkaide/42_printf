@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd_hex.c                                 :+:      :+:    :+:   */
+/*   ft_putptr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 10:28:41 by pmarkaid          #+#    #+#             */
-/*   Updated: 2023/11/16 12:50:24 by pmarkaid         ###   ########.fr       */
+/*   Created: 2023/11/16 12:12:25 by pmarkaid          #+#    #+#             */
+/*   Updated: 2023/11/16 13:08:11 by pmarkaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putnbr_fd_hex(unsigned long n, int fd, int uppercase)
-{
-	int	p;
+int ft_putptr_fd(unsigned long ptr, int fd)
+{    
+	int p;
 
 	p = 0;
-	if (n >= 16)
-	{
-		p += ft_putnbr_fd_hex(n / 16, fd, uppercase);
-		p += ft_putnbr_fd_hex(n % 16, fd, uppercase);
-	}
-	else
-	{
-		if (n < 10)
-			p += ft_putchar_fd(n + '0', fd);
-		else
-		{
-			if (uppercase)
-				p += ft_putchar_fd(n - 10 + 'A', fd);
-			else
-				p += ft_putchar_fd(n - 10 + 'a', fd);
-		}
-	}
-	return (p);
-}
+	p += ft_putstr_fd("0x", fd);    // Print "0x" prefix
+	p += ft_putnbr_fd_hex(ptr, 1 ,0);  // Print pointer address in hexadecimal
+    return (p);
+} 

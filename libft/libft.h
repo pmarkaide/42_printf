@@ -6,7 +6,7 @@
 /*   By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:08:37 by pmarkaid          #+#    #+#             */
-/*   Updated: 2023/11/16 11:09:57 by pmarkaid         ###   ########.fr       */
+/*   Updated: 2023/11/16 13:12:01 by pmarkaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ int		ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 int		ft_putnbr_fd(int n, int fd);
 int		ft_putnbr_fd_uns(unsigned int n, int fd);
-int		ft_putnbr_fd_hex(unsigned int n, int fd, int uppercase);
-int 	ft_putnbr_fd_oct(unsigned int n, int fd);
+int		ft_putnbr_fd_hex(unsigned long n, int fd, int uppercase);
+int 	ft_putnbr_fd_oct(unsigned long n, int fd);
+int		ft_putptr_fd(unsigned long ptr, int fd);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_itoa(int n);
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));

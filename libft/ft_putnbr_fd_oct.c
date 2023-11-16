@@ -6,13 +6,13 @@
 /*   By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 10:31:25 by pmarkaid          #+#    #+#             */
-/*   Updated: 2023/11/16 10:59:17 by pmarkaid         ###   ########.fr       */
+/*   Updated: 2023/11/16 13:10:53 by pmarkaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putnbr_fd_oct(unsigned int n, int fd)
+int	ft_putnbr_fd_oct(unsigned long n, int fd)
 {
 	int	p;
 
