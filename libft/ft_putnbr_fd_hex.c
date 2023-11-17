@@ -6,7 +6,7 @@
 /*   By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 10:28:41 by pmarkaid          #+#    #+#             */
-/*   Updated: 2023/11/16 12:50:24 by pmarkaid         ###   ########.fr       */
+/*   Updated: 2023/11/17 13:14:46 by pmarkaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 int	ft_putnbr_fd_hex(unsigned long n, int fd, int uppercase)
 {
 	int	p;
+	int e;
 
 	p = 0;
+	e = 0;
 	if (n >= 16)
 	{
 		p += ft_putnbr_fd_hex(n / 16, fd, uppercase);
@@ -34,5 +36,7 @@ int	ft_putnbr_fd_hex(unsigned long n, int fd, int uppercase)
 				p += ft_putchar_fd(n - 10 + 'a', fd);
 		}
 	}
+	if(p < e)
+		return (-1);
 	return (p);
 }

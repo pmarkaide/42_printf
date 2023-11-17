@@ -6,7 +6,7 @@
 /*   By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:30:23 by pmarkaid          #+#    #+#             */
-/*   Updated: 2023/11/16 14:58:51 by pmarkaid         ###   ########.fr       */
+/*   Updated: 2023/11/17 13:05:12 by pmarkaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@ int	ft_putstr_fd(char *s, int fd)
 	p = 0;
 	if (!s)
 	{
-		ft_putstr_fd("(null)", 1);
+		if (ft_putstr_fd("(null)", 1) < 0)
+			return (-1);
 		return (6);
 	}
 	while (*s)
 	{
-		p += write(fd, s, 1);
+		if (write(fd, s, 1) < 0)
+			return(-1);
+		p++;
 		s++;
 	}
 	return (p);

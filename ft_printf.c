@@ -6,7 +6,7 @@
 /*   By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:22:12 by pmarkaid          #+#    #+#             */
-/*   Updated: 2023/11/16 17:52:55 by pmarkaid         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:56:08 by pmarkaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,33 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		p;
+	int 	e;
 
 	va_start(args, format);
 	p = 0;
 	while (*format)
 	{
+		e = p;
 		if (*format == '%')
+		{
 			p += ft_putformat(*(++format), args);
+		}
 		else
+		{
 			p += write(1, format, 1);
+		}
+		if (p < e)
+			return (-1);
 		format++;
 	}
 	va_end(args);
 	return (p);
 }
+
+// #include <stdio.h>
+// int main(int argc, char const *argv[])
+// {
+// 	int p = ft_printf("%s", (char *)NULL);
+// 	printf("out: %d\n", p);
+// 	return 0;
+// }
