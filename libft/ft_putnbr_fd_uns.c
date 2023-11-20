@@ -6,7 +6,7 @@
 /*   By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:08:02 by pmarkaid          #+#    #+#             */
-/*   Updated: 2023/11/16 11:10:30 by pmarkaid         ###   ########.fr       */
+/*   Updated: 2023/11/20 12:11:51 by pmarkaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@ int	ft_putnbr_fd_uns(unsigned int n, int fd)
 	p = 0;
 	if (n >= 10)
 	{
-		p += ft_putnbr_fd_uns(n / 10, fd);
+		p = ft_error_w(p, ft_putnbr_fd_uns(n / 10, fd));
+		if (p == -1)
+			return (-1);
 	}
-	p += ft_putchar_fd(n % 10 + '0', fd);
+	p = ft_error_w(p, ft_putchar_fd(n % 10 + '0', fd));
+	if (p == -1)
+		return (-1);
 	return (p);
 }

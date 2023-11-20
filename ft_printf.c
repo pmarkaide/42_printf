@@ -6,12 +6,20 @@
 /*   By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:22:12 by pmarkaid          #+#    #+#             */
-/*   Updated: 2023/11/17 10:56:08 by pmarkaid         ###   ########.fr       */
+/*   Updated: 2023/11/20 12:10:20 by pmarkaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
+
+int	ft_error_w(int print_count, int write_return)
+{
+	if (print_count < 0 || write_return < 0)
+		return (-1);
+	else
+		return (print_count + write_return);
+}
 
 int	ft_putformat(char specifier, va_list args)
 {
@@ -19,21 +27,23 @@ int	ft_putformat(char specifier, va_list args)
 
 	p = 0;
 	if (specifier == '%')
-		p += ft_putchar_fd('%', 1);
+		p = ft_error_w(p, ft_putchar_fd('%', 1));
 	else if (specifier == 'c')
-		p += ft_putchar_fd(va_arg(args, int), 1);
+		p = ft_error_w(p, ft_putchar_fd(va_arg(args, int), 1));
 	else if (specifier == 's')
-		p += ft_putstr_fd(va_arg(args, char *), 1);
+		p = ft_error_w(p, ft_putstr_fd(va_arg(args, char *), 1));
 	else if (specifier == 'd' || specifier == 'i')
-		p += ft_putnbr_fd(va_arg(args, int), 1);
+		p = ft_error_w(p, ft_putnbr_fd(va_arg(args, int), 1));
 	else if (specifier == 'u')
-		p += ft_putnbr_fd_uns(va_arg(args, unsigned long), 1);
+		p = ft_error_w(p, ft_putnbr_fd_uns(va_arg(args, unsigned long), 1));
 	else if (specifier == 'x')
-		p += ft_putnbr_fd_hex(va_arg(args, unsigned int), 1, 0);
+		p = ft_error_w(p, ft_putnbr_fd_hex(va_arg(args, unsigned int), 1, 0));
 	else if (specifier == 'X')
-		p += ft_putnbr_fd_hex(va_arg(args, unsigned int), 1, 1);
+		p = ft_error_w(p, ft_putnbr_fd_hex(va_arg(args, unsigned int), 1, 1));
 	else if (specifier == 'p')
-		p += ft_putptr_fd(va_arg(args, unsigned long), 1);
+		p = ft_error_w(p, ft_putptr_fd(va_arg(args, unsigned long), 1));
+	if (p == -1)
+		return (-1);
 	return (p);
 }
 
@@ -41,33 +51,25 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		p;
-	int 	e;
 
 	va_start(args, format);
 	p = 0;
 	while (*format)
 	{
-		e = p;
 		if (*format == '%')
 		{
-			p += ft_putformat(*(++format), args);
+			p = ft_error_w(p, ft_putformat(*(++format), args));
+			if (p == -1)
+				return (-1);
 		}
 		else
 		{
-			p += write(1, format, 1);
+			p = ft_error_w(p, write(1, format, 1));
+			if (p == -1)
+				return (-1);
 		}
-		if (p < e)
-			return (-1);
 		format++;
 	}
 	va_end(args);
 	return (p);
 }
-
-// #include <stdio.h>
-// int main(int argc, char const *argv[])
-// {
-// 	int p = ft_printf("%s", (char *)NULL);
-// 	printf("out: %d\n", p);
-// 	return 0;
-// }
