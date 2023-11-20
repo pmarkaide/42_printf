@@ -6,11 +6,11 @@
 /*   By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 10:28:41 by pmarkaid          #+#    #+#             */
-/*   Updated: 2023/11/20 12:11:51 by pmarkaid         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:01:43 by pmarkaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 int	ft_putnbr_fd_hex(unsigned long n, int fd, int uppercase)
 {

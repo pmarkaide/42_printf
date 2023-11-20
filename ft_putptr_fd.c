@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_putptr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 08:46:54 by pmarkaid          #+#    #+#             */
-/*   Updated: 2023/11/07 10:34:22 by pmarkaid         ###   ########.fr       */
+/*   Created: 2023/11/16 12:12:25 by pmarkaid          #+#    #+#             */
+/*   Updated: 2023/11/20 13:01:43 by pmarkaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+int	ft_putptr_fd(unsigned long ptr, int fd)
 {
-	t_list	*tmp;
+	int	p;
 
-	if (!lst || !del)
-		return ;
-	while (*lst)
-	{
-		tmp = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = tmp;
-	}
+	p = 0;
+	p = ft_error_w(p, ft_putstr_fd("0x", fd));
+	if (p == -1)
+		return (-1);
+	p = ft_error_w(p, ft_putnbr_fd_hex(ptr, fd, 0));
+	if (p == -1)
+		return (-1);
+	return (p);
 }

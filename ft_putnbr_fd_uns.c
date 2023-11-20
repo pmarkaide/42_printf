@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd_uns.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 09:59:10 by pmarkaid          #+#    #+#             */
-/*   Updated: 2023/11/10 15:36:59 by pmarkaid         ###   ########.fr       */
+/*   Created: 2023/11/16 11:08:02 by pmarkaid          #+#    #+#             */
+/*   Updated: 2023/11/20 13:01:43 by pmarkaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_calloc(size_t count, size_t size)
+int	ft_putnbr_fd_uns(unsigned int n, int fd)
 {
-	size_t	total_size;
-	void	*ptr;
+	int	p;
 
-	total_size = count * size;
-	if (total_size < count && total_size < size)
-		return (NULL);
-	ptr = malloc(total_size);
-	if (ptr)
-		ft_bzero(ptr, total_size);
-	return (ptr);
+	p = 0;
+	if (n >= 10)
+	{
+		p = ft_error_w(p, ft_putnbr_fd_uns(n / 10, fd));
+		if (p == -1)
+			return (-1);
+	}
+	p = ft_error_w(p, ft_putchar_fd(n % 10 + '0', fd));
+	if (p == -1)
+		return (-1);
+	return (p);
 }

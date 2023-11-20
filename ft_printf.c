@@ -6,12 +6,12 @@
 /*   By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:22:12 by pmarkaid          #+#    #+#             */
-/*   Updated: 2023/11/20 12:10:20 by pmarkaid         ###   ########.fr       */
+/*   Updated: 2023/11/20 12:56:00 by pmarkaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
+#include <unistd.h>
 
 int	ft_error_w(int print_count, int write_return)
 {

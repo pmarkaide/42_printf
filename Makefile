@@ -6,20 +6,24 @@
 #    By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 11:21:07 by pmarkaid          #+#    #+#              #
-#    Updated: 2023/11/16 14:43:28 by pmarkaid         ###   ########.fr        #
+#    Updated: 2023/11/20 14:15:53 by pmarkaid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS = ft_printf.c
+SRCS = \
+	ft_printf.c \
+	ft_putchar_fd.c \
+	ft_putnbr_fd.c \
+	ft_putnbr_fd_hex.c \
+	ft_putnbr_fd_uns.c \
+	ft_putptr_fd.c \
+	ft_putstr_fd.c
        
 OBJS = $(SRCS:.c=.o)
 
-LIBFT_DIR = libft
-LIBFT = $(LIBFT_DIR)/libft.a
-
-INCLUDES = -I . -I $(LIBFT_DIR)
+INCLUDES = -I .
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -30,15 +34,12 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	make -C $(LIBFT_DIR)
-	ar rc $(NAME) $(OBJS) $(LIBFT_DIR)/*.o
+	ar rcs $(NAME) $(OBJS)
 
 clean:
-	make -C $(LIBFT_DIR) clean
 	rm -f $(OBJS)
 
 fclean: clean
-	make -C $(LIBFT_DIR) fclean
 	rm -f $(NAME)
 
 re: fclean all

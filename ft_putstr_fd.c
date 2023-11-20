@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 11:54:28 by pmarkaid          #+#    #+#             */
-/*   Updated: 2023/11/15 09:22:58 by pmarkaid         ###   ########.fr       */
+/*   Created: 2023/11/01 09:30:23 by pmarkaid          #+#    #+#             */
+/*   Updated: 2023/11/20 13:02:37 by pmarkaid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
+#include <unistd.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int	ft_putstr_fd(char *s, int fd)
 {
-	if (!dst && !src)
-		return (NULL);
-	if (src < dst && src + len > dst)
-		while (len--)
-			((unsigned char *)dst)[len] = ((unsigned char *)src)[len];
-	else
-		ft_memcpy(dst, src, len);
-	return (dst);
+	int	p;
+
+	p = 0;
+	if (!s)
+	{
+		p = ft_error_w(p, ft_putstr_fd("(null)", 1));
+		if (p == -1)
+			return (-1);
+		return (6);
+	}
+	while (*s)
+	{
+		p = ft_error_w(p, write(fd, s, 1));
+		if (p == -1)
+			return (-1);
+		s++;
+	}
+	return (p);
 }
