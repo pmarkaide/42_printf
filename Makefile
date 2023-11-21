@@ -6,11 +6,11 @@
 #    By: pmarkaid <pmarkaid@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 11:21:07 by pmarkaid          #+#    #+#              #
-#    Updated: 2023/11/20 14:15:53 by pmarkaid         ###   ########.fr        #
+#    Updated: 2023/11/21 11:39:06 by pmarkaid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = ft_printf.a
 
 SRCS = \
 	ft_printf.c \
